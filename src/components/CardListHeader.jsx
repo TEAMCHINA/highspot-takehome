@@ -26,6 +26,7 @@ const styles = {
 export const CardListHeader = props => {
     const { loading, handleSearchNameChange, handleSearchSubmit } = props;
 
+    // TODO: Get an animated gif or animated css spinner to indicate loading instead of the hideous loading text.
     return (
         <div style={styles.header}>
         <div style={styles.pageTitle}>
