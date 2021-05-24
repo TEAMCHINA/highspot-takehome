@@ -1,22 +1,26 @@
 
 import { AttributeList } from "./AttributeList";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const styles = {
-  cardContainer: {
+  cardContainer: isSmallScreen => ({
     margin: "10px",
-    width: "325px",
-    height: "360px",
+    width: isSmallScreen ? "90%" : "325px",
+    height: isSmallScreen ? null : "360px",
     backgroundColor: "#DDDDDD", // TODO: Consider setting background color/image based on card rarity?
     border: "1px solid #000"
-  },
+  }),
   cardMainContainer: {
     display: "flex",
   },
-  cardImage: {
-    width: "150px",
-    height: "250px"
+  imageContainer: {
+    width: "50%",
   },
+  cardImage: isSmallScreen => ({
+    width: isSmallScreen ? "100%" : "150px",
+  }),
   cardDetailsContainer: {
+    width: "50%",
     paddingLeft: "5px",
     paddingTop: "20px",
     display: "flex",
@@ -35,14 +39,15 @@ const styles = {
 }
 
 export const Card = props => {
-  var { cardData } = props;
+  const { cardData } = props;
+  const isSmallScreen = useMediaQuery('(max-width: 700px)');
 
   return (
-    <div style={styles.cardContainer}>
+    <div style={styles.cardContainer(isSmallScreen)}>
       <div style={styles.cardMainContainer}>
-        <div>
+        <div style={styles.imageContainer}>
           <img
-            style={styles.cardImage}
+            style={styles.cardImage(isSmallScreen)}
             src={cardData.imageUrl}
             alt={cardData.name} />
         </div>

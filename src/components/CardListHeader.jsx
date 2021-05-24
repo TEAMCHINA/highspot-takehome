@@ -35,7 +35,7 @@ export const CardListHeader = props => {
         <div>
           <form
             onSubmit={handleSearchSubmit}>
-            <label for="searchNameInput">Search:</label>
+            <label htmlFor="searchNameInput">Search:</label>
             <input style={styles.searchNameInput} type="text" id="searchNameInput" onChange={handleSearchNameChange}/>
             <input type="submit" value=">"/>
           </form>
